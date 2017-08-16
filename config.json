@@ -1,0 +1,3 @@
+{
+    "conexionbd": "mongodb://master:admin@ds129153.mlab.com:29153/wembuwon"
+}
