@@ -45,4 +45,4 @@ var CasillaSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('Casillas', CasillaSchema);
+module.exports = mongoose.model('CasillaModelo', CasillaSchema);

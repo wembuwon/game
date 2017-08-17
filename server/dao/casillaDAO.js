@@ -8,12 +8,12 @@ var mongoose = require('mongoose'),
 exports.obtener_casillas2 = function (filtros){
   mongoose.connect(conexion.conexionbd);
   var lista;
-  Casilla.find({}, function(err, casilla) {
+  Casilla.find({}, function(err, lista) {
     if (err)
       throw err;
   });
   mongoose.disconnect();
-  return casilla;
+  return lista;
 };
 
 exports.obtener_casillas = function(req, res) {
