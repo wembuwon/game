@@ -7,8 +7,8 @@ var mongoose = require('mongoose'),
 
 
 exports.getCasillas = function(req, res) {
-  casillaDao = new CasillaDAO();
-  var casillas = casillaDao.obtener_casillas_mapa();
+  mapaDao = new casillaDao.CasillaDAO();
+  var casillas = mapaDao.obtener_casillas_mapa();
     if (err)
       res.send(err);
     res.json(casillas);
