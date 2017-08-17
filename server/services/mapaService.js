@@ -24,7 +24,7 @@ class CasillaDAO {
   
 
 exports.getCasillas = function(req, res) {
-  mapaDao = new CasillaDAO();
+  var mapaDao = new CasillaDAO();
   var casillas = mapaDao.obtener_casillas_mapa();
     if (err)
       res.send(err);
