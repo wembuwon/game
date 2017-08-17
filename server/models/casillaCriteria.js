@@ -19,21 +19,6 @@ var CasillaCriteria = new Schema({
   },
   tipo: {
     type: String
-  },
-  comida: {
-    type: Number
-  },
-  madera: {
-    type: Number
-  },
-  piedra: {
-    type: Number
-  },
-  metal: {
-    type: Number
-  },
-  planos: {
-    type: Number
   }
 });
 

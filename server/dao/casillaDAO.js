@@ -2,8 +2,7 @@
 
 var mongoose = require('mongoose'),
     conexion = require('../../config.json'),
-    Casilla = mongoose.model('CasillaModelo'),
-    filtros = mongoose.model('CasillaCriteria');
+    Casilla = mongoose.model('CasillaModelo');
 
 exports.obtener_casillas2 = function (filtros){
   mongoose.connect(conexion.conexionbd);
