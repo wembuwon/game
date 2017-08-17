@@ -4,15 +4,20 @@ var mongoose = require('mongoose'),
     conexion = require('../../config.json'),
     Casilla = mongoose.model('CasillaModelo');
 
-exports.obtener_casillas2 = function (){
-  mongoose.connect(conexion.conexionbd);
-  var lista;
-  Casilla.find({}, function(err, lista) {
+function CasillaDAO (){
+  this.conexion = require('../../config.json');
+  this.mongoose = require('mongoose')
+}
+
+CasillaDAO.prototype.obtener_casillas_mapa = function(){
+  this.mongoose.connect(this.conexion.conexionbd);
+  casilla = mongoose.model('CasillaModelo');
+  casilla.find({}, function(err, casilla) {
     if (err)
-      throw err;
+      return err;
+    return casilla;
   });
   mongoose.disconnect();
-  return lista;
 };
 
 exports.obtener_casillas = function(req, res) {

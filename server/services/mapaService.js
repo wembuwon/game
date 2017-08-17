@@ -7,10 +7,11 @@ var mongoose = require('mongoose'),
 
 
 exports.getCasillas = function(req, res) {
-  casilla = casillaDao.obtener_casillas2();
+  casillaDao = new CasillaDAO();
+  var casillas = casillaDao.obtener_casillas_mapa();
     if (err)
       res.send(err);
-    res.json(casilla);
+    res.json(casillas);
 };
 
 
