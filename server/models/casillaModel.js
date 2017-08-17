@@ -4,7 +4,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var CasillaSchema = new Schema({
+var CasillaModelo = new Schema({
   mapa: {
     type: String,
     Required: 'Mapa al que pertenece'
@@ -45,4 +45,4 @@ var CasillaSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('CasillaModelo', CasillaSchema);
+module.exports = mongoose.model('CasillaModelo', CasillaModelo);

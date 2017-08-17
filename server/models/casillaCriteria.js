@@ -4,7 +4,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var CasillaSchema = new Schema({
+var CasillaCriteria = new Schema({
   id_casilla: {
     type: String
   },
@@ -38,4 +38,4 @@ var CasillaSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('CasillaCriteria', CasillaSchema);
+module.exports = mongoose.model('CasillaCriteria', CasillaCriteria);
