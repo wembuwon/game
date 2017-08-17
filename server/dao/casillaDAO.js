@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
     conexion = require('../../config.json'),
     Casilla = mongoose.model('CasillaModelo');
 
-exports.obtener_casillas2 = function (filtros){
+exports.obtener_casillas2 = function (){
   mongoose.connect(conexion.conexionbd);
   var lista;
   Casilla.find({}, function(err, lista) {
