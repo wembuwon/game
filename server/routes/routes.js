@@ -12,7 +12,7 @@ module.exports = function(app) {
 		.put(mapa.modificar_casilla)
 		.delete(mapa.borrar_casilla);
 
-	var mapa2 = require('../services/casillaService');
+	var mapa2 = require('../services/mapaService');
 	app.route('/mapa2')
 		.get(mapa2.getCasillas);
 };
