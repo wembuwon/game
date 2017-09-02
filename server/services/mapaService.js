@@ -1,34 +1,51 @@
 'use strict';
 
+
 var mongoose = require('mongoose'),
-    casillaDao = require('../dao/casillaDAO'),
-    casilla = mongoose.model('CasillaModelo');
+    conexion = require('../../config.json'),
+    Casilla = mongoose.model('CasillaModelo'),
+    casillaDAO = require('../dao/casillaDAO'),
+    bodyParser = require('body-parser');
 
-
-class CasillaDAO {
+/*class CasillaDAO {
     constructor() {
-        this.conexion = require('../../config.json');
-        this.mongoose = require('mongoose');
     }
-    obtener_casillas_mapa() {
-        this.mongoose.connect(this.conexion.conexionbd);
-        casilla = mongoose.model('CasillaModelo');
-        casilla.find({}, function(err, casilla) {
-            if (err)
-                return err;
-            return casilla;
+    obtener_casillas_mapa(values) {
+        console.log('connect: '+conexion.conexionbd);
+        mongoose.connect(conexion.conexionbd);
+        console.log('casilla.find');
+        values = Casilla.find({}, function(err, value) {
+            //res.json(value);
+            callback("", value);
         });
+console.log('value');
+console.log(values);
+        console.log('disconnect');
         mongoose.disconnect();
     }
-}
+    
+}*/
   
 
+
 exports.getCasillas = function(req, res) {
-  var mapaDao = new CasillaDAO();
-  var casillas = mapaDao.obtener_casillas_mapa();
-    if (err)
-      res.send(err);
-    res.json(casillas);
+  var texto = "Hola mundo";
+  casillaDAO.obtener_casillas2(function (err, value) {
+  console.log('mapa');
+  console.log(value);
+  console.log(texto);
+  res.json(value);
+    //if (casillas == 0)
+      //res.json({ message: 'ERROR' });
+    //res.json(res);
+    });
+
 };
+
+
+
+
+
+
 
 
