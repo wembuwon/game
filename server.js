@@ -2,7 +2,6 @@ var express = require('express'),
   app = express(),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
-  Casilla = require('./server/models/casillaModel'),
   bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
