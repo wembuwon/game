@@ -3,7 +3,6 @@
 
 var mongoose = require('mongoose'),
     conexion = require('../../config.json'),
-    Casilla = mongoose.model('CasillaModelo'),
     casillaDAO = require('../dao/casillaDAO'),
     bodyParser = require('body-parser');
 
@@ -26,8 +25,6 @@ console.log(values);
     
 }*/
   
-
-
 exports.getCasillas = function(req, res) {
   var texto = "Hola mundo";
   casillaDAO.obtener_casillas2(function (err, value) {

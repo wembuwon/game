@@ -1,5 +1,5 @@
 'use strict';
-
+require('../models/casillaModelo');
 var mongoose = require('mongoose'),
     conexion = require('../../config.json'),
     Casilla = mongoose.model('CasillaModelo');
