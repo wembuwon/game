@@ -5,17 +5,30 @@ var mongoose = require('mongoose'),
     Casilla = mongoose.model('CasillaModelo');
 
 
-exports.obtener_casillas2 = function(callback) {  
-  console.log('connect');
+exports.obtener_casillas = function(mapa, callback) {  
   mongoose.connect(conexion.conexionbd);
-    Casilla.find({}, function(err, casillas) {
-        console.log(casillas);
-        callback("", casillas);
-    });
-  console.log('disconnect');
+  
+  Casilla.find({'mapa':mapa}, function(err, casillas) {
+    if (err)
+      callback(err, "");
+    callback("", casillas);
+  });
+  
   mongoose.disconnect();
 };
 
+exports.obtener_casilla = function(id_casilla, callback) {
+  mongoose.connect(conexion.conexionbd);
+
+  Casilla.findById(id_casilla, function(err, casilla) {
+    if (err)
+      callback(err, "");
+    callback("", casilla);
+  });
+  
+  mongoose.disconnect();
+};
+/*
 exports.obtener_casillas = function(req, res) {
   mongoose.connect(conexion.conexionbd);
   Casilla.find({}, function(err, casilla) {
@@ -25,12 +38,9 @@ exports.obtener_casillas = function(req, res) {
   });
   mongoose.disconnect();
 };
-
-
-exports.anadir_casilla = function(req, res) {
+exports.obtener_casilla = function(req, res) {
   mongoose.connect(conexion.conexionbd);
-  var nueva_casilla = new Casilla(req.body);
-  nueva_casilla.save(function(err, casilla) {
+  Casilla.findById(req.params.casillaId, function(err, casilla) {
     if (err)
       res.send(err);
     res.json(casilla);
@@ -38,9 +48,12 @@ exports.anadir_casilla = function(req, res) {
   mongoose.disconnect();
 };
 
-exports.obtener_casilla = function(req, res) {
+*/
+
+exports.anadir_casilla = function(req, res) {
   mongoose.connect(conexion.conexionbd);
-  Casilla.findById(req.params.casillaId, function(err, casilla) {
+  var nueva_casilla = new Casilla(req.body);
+  nueva_casilla.save(function(err, casilla) {
     if (err)
       res.send(err);
     res.json(casilla);

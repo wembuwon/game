@@ -1,18 +1,21 @@
 'use strict';
 
 module.exports = function(app) {
-	var mapa = require('../dao/casillaDAO');
 
-	app.route('/mapa')
-		.get(mapa.obtener_casillas)
-		.post(mapa.anadir_casilla);
+	var mapaDAO = require('../dao/casillaDAO');
+	app.route('/mapadao')
+//		.get(mapaDAO.obtener_casillas)
+		.post(mapaDAO.anadir_casilla);
 
 	app.route('/mapa/:casillaId')
-		.get(mapa.obtener_casilla)
-		.put(mapa.modificar_casilla)
-		.delete(mapa.borrar_casilla);
+//		.get(mapaDAO.obtener_casilla)
+		.put(mapaDAO.modificar_casilla)
+		.delete(mapaDAO.borrar_casilla);
 
-	var mapa2 = require('../services/mapaService');
-	app.route('/mapa2')
-		.get(mapa2.getCasillas);
+	var mapa = require('../services/mapaService');
+	app.route('/mapa')
+		.get(mapa.getCasillas);
+
+	app.route('/mapa/:id_casilla')
+		.get(mapa.getCasilla)
 };

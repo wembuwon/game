@@ -16,6 +16,10 @@ var ImperioModelo = new Schema({
   id_raza: {
     type: String,
     default: ''
+  },
+  mapa: {
+    type: String,
+    default: ''
   }
 });
 

@@ -26,16 +26,23 @@ console.log(values);
 }*/
   
 exports.getCasillas = function(req, res) {
-  var texto = "Hola mundo";
-  casillaDAO.obtener_casillas2(function (err, value) {
-  console.log('mapa');
-  console.log(value);
-  console.log(texto);
-  res.json(value);
-    //if (casillas == 0)
-      //res.json({ message: 'ERROR' });
-    //res.json(res);
-    });
+  console.log(req.query);
+  console.log("mapa:"+req.query.id_mapa)
+  casillaDAO.obtener_casillas(req.query.id_mapa, function (err, value) {
+    if (err)
+      res.send(err);
+    res.json(value);
+  });
+
+};
+
+exports.getCasilla = function(req, res) {
+  
+  casillaDAO.obtener_casilla(req.params.id_casilla, function (err, value) {
+    if (err)
+      res.send(err);
+    res.json(value);
+  });
 
 };
 
