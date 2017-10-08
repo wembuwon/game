@@ -26,8 +26,7 @@ console.log(values);
 }*/
   
 exports.getCasillas = function(req, res) {
-  console.log(req.query);
-  console.log("mapa:"+req.query.id_mapa)
+
   casillaDAO.obtener_casillas(req.query.id_mapa, function (err, value) {
     if (err)
       res.send(err);
