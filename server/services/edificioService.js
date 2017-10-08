@@ -3,12 +3,12 @@
 
 var mongoose = require('mongoose'),
     conexion = require('../../config.json'),
-    casillaDAO = require('../dao/casillaDAO'),
+    edificioDAO = require('../dao/edificioDAO'),
     bodyParser = require('body-parser');
   
-exports.getCasillas = function(req, res) {
+exports.getEdificios = function(req, res) {
 
-  casillaDAO.obtener_casillas(req.query.id_mapa, function (err, value) {
+  edificioDAO.obtener_edificios(function (err, value) {
     if (err)
       res.send(err);
     res.json(value);
@@ -16,9 +16,9 @@ exports.getCasillas = function(req, res) {
 
 };
 
-exports.getCasilla = function(req, res) {
+exports.getEdificio = function(req, res) {
   
-  casillaDAO.obtener_casilla(req.params.id_casilla, function (err, value) {
+  edificioDAO.obtener_edificio(req.params.id_edificio, function (err, value) {
     if (err)
       res.send(err);
     res.json(value);

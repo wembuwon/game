@@ -18,4 +18,20 @@ module.exports = function(app) {
 
 	app.route('/mapa/:id_casilla')
 		.get(mapa.getCasilla)
+
+
+	var edificioDAO = require('../dao/edificioDAO');
+		app.route('/edificiodao')
+			.post(edificioDAO.anadir_edificio);
+	
+		app.route('/edificiodao/:edificioId')
+			.put(edificioDAO.modificar_edificio)
+			.delete(edificioDAO.borrar_edificio);
+	
+		var edificio = require('../services/edificioService');
+		app.route('/edificio')
+			.get(edificio.getEdificios);
+	
+		app.route('/edificio/:id_edificio')
+			.get(edificio.getEdificio)
 };
