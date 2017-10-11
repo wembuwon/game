@@ -50,6 +50,7 @@ exports.obtener_casilla = function(req, res) {
 
 */
 
+//Estas se habilitan para hacer las primeras inserciones
 exports.anadir_casilla = function(req, res) {
   mongoose.connect(conexion.conexionbd);
   var nueva_casilla = new Casilla(req.body);

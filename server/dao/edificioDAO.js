@@ -29,7 +29,7 @@ exports.obtener_edificio = function(id_edificio, callback) {
   mongoose.disconnect();
 };
 
-
+//Estas se habilitan para hacer las primeras inserciones
 exports.anadir_edificio = function(req, res) {
   mongoose.connect(conexion.conexionbd);
   var nuevo_edificio = new Edificio(req.body);

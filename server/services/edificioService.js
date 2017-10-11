@@ -9,8 +9,9 @@ var mongoose = require('mongoose'),
 exports.getEdificios = function(req, res) {
 
   edificioDAO.obtener_edificios(function (err, value) {
-    if (err)
+    if (err) {
       res.send(err);
+    }
     res.json(value);
   });
 
@@ -19,8 +20,9 @@ exports.getEdificios = function(req, res) {
 exports.getEdificio = function(req, res) {
   
   edificioDAO.obtener_edificio(req.params.id_edificio, function (err, value) {
-    if (err)
+    if (err) {
       res.send(err);
+    }
     res.json(value);
   });
 

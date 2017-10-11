@@ -5,17 +5,9 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ConstruccionModelo = new Schema({
-  mapa: {
+  id_ciudad: {
     type: String,
-    Required: 'Mapa al que pertenece'
-  },
-  coorX: {
-    type: Number,
-    Required: 'Coordenada X'
-  },
-  coorY: {
-    type: Number,
-    Required: 'Coordenada Y'
+    Required: 'ciudad en la que se encuentra el edificio'
   },
   id_edificio: {
     type: String,

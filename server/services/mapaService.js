@@ -9,8 +9,9 @@ var mongoose = require('mongoose'),
 exports.getCasillas = function(req, res) {
 
   casillaDAO.obtener_casillas(req.query.id_mapa, function (err, value) {
-    if (err)
+    if (err) {
       res.send(err);
+    }
     res.json(value);
   });
 
@@ -19,8 +20,9 @@ exports.getCasillas = function(req, res) {
 exports.getCasilla = function(req, res) {
   
   casillaDAO.obtener_casilla(req.params.id_casilla, function (err, value) {
-    if (err)
+    if (err) {
       res.send(err);
+    }
     res.json(value);
   });
 
