@@ -40,5 +40,6 @@ module.exports = function(app) {
 		.post(construccion.addConstruccion);
 		
 	app.route('/construccion/:id_construccion')
-		.get(construccion.getConstruccion);
+		.get(construccion.getConstruccion)
+		.put(construccion.editConstruccion);
 };

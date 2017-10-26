@@ -19,11 +19,11 @@ exports.obtener_edificios = function(callback) {
 
 exports.obtener_edificio = function(id_edificio, callback) {
   mongoose.connect(conexion.conexionbd);
-
   Edificio.findById(id_edificio, function(err, edificio) {
     if (err)
       callback(err, "");
     callback("", edificio);
+    
   });
   
   mongoose.disconnect();

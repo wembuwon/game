@@ -39,3 +39,13 @@ exports.anadir_construccion = function(construccion, callback) {
   
   mongoose.disconnect();
 };
+
+exports.modificar_construccion = function(construccion, callback) {
+  mongoose.connect(conexion.conexionbd);
+  Construccion.findOneAndUpdate({_id:construccion._id}, construccion, {new: true}, function(err, construccion) {
+    if (err)
+      callback(err, "");
+    callback("", construccion);
+  });
+  mongoose.disconnect();
+};
