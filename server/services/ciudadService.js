@@ -6,13 +6,28 @@ var mongoose = require('mongoose'),
     util = require('../transversal/util'),
     construccionDAO = require('../dao/construccionDAO'),
     edificioDAO = require('../dao/edificioDAO'),
+    ciudadDAO = require('../dao/ciudadDAO'),
     bodyParser = require('body-parser'),
     Construccion = mongoose.model('ConstruccionModelo'),
-    Edificio = mongoose.model('EdificioModelo');
+    Edificio = mongoose.model('EdificioModelo'),
+    Ciudad = mongoose.model('CiudadModelo');
 
 
-function actualizarConstruccion (construccion){
+function actualizarCiudad (ciudad){
+  // variables para contar los trabadores que quedan
+  var trabajadores_comida = ciudad.trabajadores_comida;
+  var trabajadores_madera = ciudad.trabajadores_madera;
+  var trabajadores_piedra = ciudad.trabajadores_piedra;
+  var trabajadores_metal = ciudad.trabajadores_metal;
+  var buscadores_planos = ciudad.buscadores_planos;
+  construccionDAO.obtener_construcciones(ciudad._id, function(err,construcciones){
+    if (err) {
+      res.send(err);
+    }
+
+  });
   // si el edificio está en construción se mira cuanto ha avanzada desde la última actualización
+  /*
   if (construccion.tiempo_construccion > 0) {
     var fecha = new Date();
     var diferencia = (fecha - construccion.modificacion) / 86400000; // 86400000 son los milisegundos de un día
@@ -26,41 +41,41 @@ function actualizarConstruccion (construccion){
     }
     construccionDAO.modificar_construccion(construccion, function (err, construccion) {} );
   }
-  return construccion;
+  */
+  return ciudad;
 }
 
-exports.getConstrucciones = function(req, res) {
+exports.getCiudades = function(req, res) {
   
-  construccionDAO.obtener_construcciones(req.query.id_ciudad, function (err, construcciones) {
+  ciudadDAO.obtener_ciudades(req.query.id_imperio, function (err, ciudades) {
     if (err) {
       res.send(err);
     }
 
-    construcciones.forEach(function(construccion) {
-      construccion = actualizarConstruccion (construccion);
+    ciudades.forEach(function(ciudad) {
+      ciudad = actualizarCiudad (ciudad);
     }, this);
 
-    res.json(construcciones);
+    res.json(ciudades);
   });
 
 };
 
-exports.getConstruccion = function(req, res) {
-  construccionDAO.obtener_construccion(req.params.id_construccion, function (err, construccion) {
+exports.getCiudad = function(req, res) {
+  ciudadDAO.obtener_ciudad(req.params.id_ciudad, function (err, ciudad) {
     if (err) {
       res.send(err);
     }
-    construccion = actualizarConstruccion (construccion);
-    res.json(construccion);
+    ciudad = actualizarCiudad (ciudad);
+    res.json(ciudad);
   });
 
 };
 
-exports.addConstruccion = function(req, res)
+exports.addCiudad = function(req, res)
 {
-  var nueva_construccion = new Construccion(req.body);
-  console.log(nueva_construccion);
-  construccionDAO.anadir_construccion(nueva_construccion, function (err, value) {
+  var nueva_ciudad = new Ciudad(req.body);
+  ciudadDAO.anadir_ciudad(nueva_ciudad, function (err, value) {
     if (err) {
       res.send(err);
     }
@@ -68,13 +83,15 @@ exports.addConstruccion = function(req, res)
   });
 }
 
-exports.editConstruccion = function(req, res) {
-  var nuevos_datos = new Construccion(req.body);
-  construccionDAO.obtener_construccion(req.params.id_construccion, function (err, construccion) {
+exports.editCiudad = function(req, res) {
+  var nuevos_datos = new Ciudad(req.body);
+  ciudadDAO.obtener_ciudad(req.params.id_ciudad, function (err, ciudad) {
     if (err) {
       res.send(err);
     }
-    construccion = actualizarConstruccion (construccion);
+    ciudad = actualizarCiudad (ciudad);
+    res.json(ciudad);
+    /*
     construccion.trabajadores = nuevos_datos.trabajadores;
     // solo se puede subir de nivel cuando la construcción del nivel actual está terminada
     if (construccion.tiempo_construccion == 0 && construccion.nivel < nuevos_datos.nivel){
@@ -90,13 +107,13 @@ exports.editConstruccion = function(req, res) {
     else{
       construccionDAO.modificar_construccion(construccion, function (err, construccion) {} );
       res.json(construccion);
-    }
+    }*/
   });
 
 };
 
-exports.deleteConstruccion = function(req, res) {
-  construccionDAO.borrar_construccion(req.params.id_construccion, function (err, mensaje) {
+exports.deleteCiudad = function(req, res) {
+  ciudadDAO.borrar_ciudad(req.params.id_ciudad, function (err, mensaje) {
     if (err) {
       res.send(err);
     }

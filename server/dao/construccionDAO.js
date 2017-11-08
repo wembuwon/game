@@ -49,3 +49,15 @@ exports.modificar_construccion = function(construccion, callback) {
   });
   mongoose.disconnect();
 };
+
+exports.borrar_construccion = function(id_construccion, callback) {
+  mongoose.connect(conexion.conexionbd);
+  Construccion.remove({_id: id_construccion}, function(err, construccion) {
+    if (err){
+      callback(err, "");
+    }
+    callback("", "Edificio eliminado correctamente");
+  });
+  mongoose.disconnect();
+};
+

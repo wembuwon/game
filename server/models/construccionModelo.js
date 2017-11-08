@@ -13,6 +13,15 @@ var ConstruccionModelo = new Schema({
     type: String,
     Required: 'tipo de edificación'
   },
+  tipo: {
+    type: String,
+    enum: ['recoleccion', 'militar', 'civil'],
+    default: 'civil'
+  },
+  subtipo: {
+    type: String,
+    default: ''
+  },
   nivel: {
     type: Number,
     default: 1
@@ -22,6 +31,18 @@ var ConstruccionModelo = new Schema({
     default: 0
   },
   trabajadores: {
+    type: Number,
+    default: 0
+  },
+  capacidad: {
+    type: Number,
+    default: 0
+  },
+  base: {
+    type: Number,
+    default: 0
+  },
+  coeficiente: {
     type: Number,
     default: 0
   },

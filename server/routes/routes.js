@@ -41,5 +41,16 @@ module.exports = function(app) {
 		
 	app.route('/construccion/:id_construccion')
 		.get(construccion.getConstruccion)
-		.put(construccion.editConstruccion);
+		.put(construccion.editConstruccion)
+		.delete(construccion.deleteConstruccion);
+
+	var ciudad = require('../services/ciudadService');
+	app.route('/ciudad')
+		.get(ciudad.getCiudades)
+		.post(ciudad.addCiudad);
+		
+	app.route('/ciudad/:id_ciudad')
+		.get(ciudad.getCiudad)
+		.put(ciudad.editCiudad)
+		.delete(ciudad.deleteCiudad);
 };
